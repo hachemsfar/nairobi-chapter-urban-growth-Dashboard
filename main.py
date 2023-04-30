@@ -1,3 +1,9 @@
 import streamlit as st
+import pandas as pd
+import numpy as np 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
 
 st.header("project name")
+df=pd.read_csv("clean.csv")
+st.write(df)
