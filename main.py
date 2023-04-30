@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 st.header("project name")
 data=pd.read_csv("clean.csv")
 
-filter_country_list=data[['Country name']].unique()
+filter_country_list=data['Country name'].unique()
 filter_country=st.multiselect("Country",filter_country_list)
 
 if(selected_cities):
