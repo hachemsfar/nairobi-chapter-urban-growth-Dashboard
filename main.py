@@ -5,21 +5,26 @@ import seaborn as sns
 import matplotlib.pyplot as plt 
 
 st.header("project name")
-df=pd.read_csv("clean.csv")
+data=pd.read_csv("clean.csv")
 
+filter_country_list=data[['Country name']].unique()
+filter_country=st.multiselect("Country",filter_country_list)
 
-df_urban = df[[ 'Country name', 'Year', 'Aggregation level',
+if(selected_cities):
+    data=data[data['Ort'].isin(filter_country)]
+
+df_urban = data[[ 'Country name', 'Year', 'Aggregation level',
                 'Sub-national region name' , 'Number of individual cases in dataset for region' , 
                 'Number of households in dataset for region' , '% population in urban areas' 
                 ]] 
-df_wealth = df[['Country name', 'Year','Mean International Wealth Index (IWI) score of region',
+df_wealth = data[['Country name', 'Year','Mean International Wealth Index (IWI) score of region',
        '% poor households (with IWI value under 70)',
        '% poorer households (with IWI value under 50)',
        '% poorest households (with IWI value under 35)',
        'Gini coefficient wealth inequality', 'Theil-T wealth inequality',
        'Wealth inequality within groups (THeil-T)']]
 
-df_years_edu = df[['Country name', 'Year','Mean years education of adults aged 20+',
+df_years_edu = data[['Country name', 'Year','Mean years education of adults aged 20+',
        'Mean years education of women aged 20+',
        'Mean years education of men aged 20+',
        'Mean years education of adults aged 25+',
@@ -35,7 +40,7 @@ df_years_edu = df[['Country name', 'Year','Mean years education of adults aged 2
        'Mean years education of women aged 60+',
        'Mean years education of men aged 60+']]
 
-df_educ = df[['Country name', 'Year',
+df_educ = data[['Country name', 'Year',
        'Educational attendance children 6-8',
        'Educational attendance children 9-11',
        'Educational attendance children 12-14',
@@ -56,7 +61,7 @@ df_educ = df[['Country name', 'Year',
        'Educational attendance boys 21-23']]
 
 
-df_fert = df[['Country name', 'Year','Total Fertility Rate', 'Age-specific fertility rate age 10-14',
+df_fert = data[['Country name', 'Year','Total Fertility Rate', 'Age-specific fertility rate age 10-14',
        'Age-specific fertility rate age 15-19',
        'Age-specific fertility rate age 20-24',
        'Age-specific fertility rate age 25-29',
@@ -65,7 +70,7 @@ df_fert = df[['Country name', 'Year','Total Fertility Rate', 'Age-specific ferti
        'Age-specific fertility rate age 40-44',
        'Age-specific fertility rate age 45-49']] 
 
-df_pop = df[['Country name', 'Year','Total area population in millions',
+df_pop = data[['Country name', 'Year','Total area population in millions',
        'Share of population living in area', '% population aged 0-9',
        '% population aged 10-19', '% population aged 20-29',
        '% population aged 30-39', '% population aged 40-49',
@@ -76,7 +81,7 @@ df_pop = df[['Country name', 'Year','Total area population in millions',
        'Demographic Window Phase', '% population aged under 15',
        '% population aged 15-65', '% population aged over 65']]
 
-df_mortality = df[['Country name', 'Year','Infant mortality rate', 'Under five mortality rate',
+df_mortality = data[['Country name', 'Year','Infant mortality rate', 'Under five mortality rate',
        'Neo-natal mortality rate', 'Post-neonatal mortality rate',
        'Child mortality rate']] 
 
