@@ -96,5 +96,5 @@ ax.bar(df_top_20['Country name'], df_top_20['Number of individual cases in datas
 ax.title.set_text('Top 20 Countries with Highest Average Number of individual cases in dataset for region')
 ax.set_ylabel('Number of individual cases in dataset for region')
 ax.set_xlabel('Country')
-ax.set_xticklabels(rotation=90)
+ax.set_xticklabels(labels=['Country name','Number of individual cases in dataset for region'],rotation=90)
 st.pyplot(fig)
