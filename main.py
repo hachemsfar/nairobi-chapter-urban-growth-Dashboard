@@ -10,7 +10,7 @@ data=pd.read_csv("clean.csv")
 filter_country_list=data['Country name'].unique()
 filter_country=st.multiselect("Country",filter_country_list)
 
-if(selected_cities):
+if(filter_country):
     data=data[data['Ort'].isin(filter_country)]
 
 df_urban = data[[ 'Country name', 'Year', 'Aggregation level',
