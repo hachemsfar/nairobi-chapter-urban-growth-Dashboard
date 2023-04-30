@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 
 st.header("project name")
 df=pd.read_csv("clean.csv")
-st.write(df)
 
 
 df_urban = df[[ 'Country name', 'Year', 'Aggregation level',
@@ -80,3 +79,5 @@ df_pop = df[['Country name', 'Year','Total area population in millions',
 df_mortality = df[['Country name', 'Year','Infant mortality rate', 'Under five mortality rate',
        'Neo-natal mortality rate', 'Post-neonatal mortality rate',
        'Child mortality rate']] 
+
+st.write(df_mortality)
