@@ -85,4 +85,16 @@ df_mortality = data[['Country name', 'Year','Infant mortality rate', 'Under five
        'Neo-natal mortality rate', 'Post-neonatal mortality rate',
        'Child mortality rate']] 
 
-st.write(df_mortality)
+st.write(df_urban)
+
+
+
+df_top_20 = df_urban.groupby('Country name')[['Number of individual cases in dataset for region', 'Number of households in dataset for region','% population in urban areas']].mean().nlargest(20, 'Number of individual cases in dataset for region').sort_values(ascending=False,by='Number of individual cases in dataset for region').reset_index()
+
+fig,ax=plt.subplots(figsize=(11,7))
+ax.bar(df_top_20['Country name'], df_top_20['Number of individual cases in dataset for region'])
+ax.title('Top 20 Countries with Highest Average Number of individual cases in dataset for region')
+ax.set_ylabel('Number of individual cases in dataset for region')
+ax.set_xlabel('Country')
+ax.xticks(rotation=90)
+st.pyplot(fig)
