@@ -11,7 +11,7 @@ filter_country_list=data['Country name'].unique()
 filter_country=st.multiselect("Country",filter_country_list)
 
 if(filter_country):
-    data=data[data['Ort'].isin(filter_country)]
+    data=data[data['Country name'].isin(filter_country)]
 
 df_urban = data[[ 'Country name', 'Year', 'Aggregation level',
                 'Sub-national region name' , 'Number of individual cases in dataset for region' , 
