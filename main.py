@@ -93,8 +93,8 @@ df_top_20 = df_urban.groupby('Country name')[['Number of individual cases in dat
 
 fig,ax=plt.subplots(figsize=(11,7))
 ax.bar(df_top_20['Country name'], df_top_20['Number of individual cases in dataset for region'])
-ax.title('Top 20 Countries with Highest Average Number of individual cases in dataset for region')
+ax.set_text('Top 20 Countries with Highest Average Number of individual cases in dataset for region')
 ax.set_ylabel('Number of individual cases in dataset for region')
 ax.set_xlabel('Country')
-ax.xticks(rotation=90)
+ax.set_xticks(rotation=90)
 st.pyplot(fig)
