@@ -195,8 +195,8 @@ df_melted = pd.melt(df_temp,
                                 '% poorest households (with IWI value under 35)'],
                     var_name='variable',
                     value_name='value')
-st.write(df_melted)
-df_mean = df_melted.groupby(['Country name', 'Year']).mean().reset_index()
+
+df_mean = df_melted.groupby(['Country name','variable', 'Year']).mean().reset_index()
 
 fig, ax = plt.subplots(figsize=(15, 8))
 for variable in df_melted['variable'].unique():
